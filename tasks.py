@@ -20,3 +20,14 @@ def se_recent(site):
        return [value.title for value in questions]
     except:
         return
+
+
+@app.task(serializer='json')
+def se_user(site, idvalue):
+    try:
+        cse = stackexchange.Site(site, None)
+        user = cse.user(idbalue)
+        return {'result': user}
+    except:
+        return
+
